@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting to MonTkay App...</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .transition-container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 500px;
+            width: 90%;
+        }
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+        }
+
+        .main-message {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.4s forwards;
+        }
+
+        .sub-message {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.6s forwards;
+        }
+
+        .spinner-container {
+            margin: 2rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.8s forwards;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top: 4px solid #ffffff;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            animation: spin 1s linear infinite;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffffff, #f0f0f0);
+            border-radius: 2px;
+            animation: progressFill 2.5s ease-out forwards;
+            transform: translateX(-100%);
+        }
+
+        .status-text {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1s forwards;
+        }
+
+        .app-preview {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            animation: floatIcon 2s ease-in-out infinite;
+        }
+
+        .feature-icon:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .feature-icon:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        .backup-link {
+            margin-top: 2rem;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 1.4s forwards;
+        }
+
+        .backup-link a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+            padding-bottom: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .backup-link a:hover {
+            color: white;
+            border-bottom-color: white;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes progressFill {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(0%); }
+        }
+
+        @keyframes floatIcon {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 2rem;
+            }
+            
+            .main-message {
+                font-size: 1.2rem;
+            }
+            
+            .feature-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+
+        /* Background animation */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
+            animation: backgroundShift 8s ease-in-out infinite;
+        }
+
+        @keyframes backgroundShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body>
+    <div class="transition-container">
+        <div class="logo">MonTkay</div>
+        <h1 class="main-message">Launching Your Dashboard</h1>
+        <p class="sub-message">Taking you to the product management system...</p>
+        
+        <div class="spinner-container">
+            <div class="spinner"></div>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+        
+        <div class="status-text" id="statusText">Initializing secure connection...</div>
+        
+        <div class="app-preview">
+            <div class="feature-icon">📊</div>
+            <div class="feature-icon">📦</div>
+            <div class="feature-icon">💰</div>
+        </div>
+        
+        <div class="backup-link">
+            <a href="#" onclick="handleManualRedirect()">Click here if not redirected automatically</a>
+        </div>
+    </div>
+
+    <script>
+        // Configuration
+        const APP_URL = 'https://product-offer-frontend-4ivcvo5xa-lilyans-projects-1055f01a.vercel.app';
+        
+        // Get redirect parameters
+        const urlParams = new URLSearchParams(window.location.search);
+        const page = urlParams.get('page') || 'login';
+        const source = urlParams.get('source') || 'website';
+        
+        // Status messages
+        const statusMessages = [
+            'Initializing secure connection...',
+            'Loading your workspace...',
+            'Preparing dashboard...',
+            'Almost ready...'
+        ];
+        
+        let currentStatusIndex = 0;
+        const statusElement = document.getElementById('statusText');
+        
+        // Update status messages
+        function updateStatus() {
+            if (currentStatusIndex < statusMessages.length) {
+                statusElement.textContent = statusMessages[currentStatusIndex];
+                currentStatusIndex++;
+                setTimeout(updateStatus, 600);
+            }
+        }
+        
+        // Start status updates
+        setTimeout(updateStatus, 800);
+        
+        // Handle redirect
+        function performRedirect() {
+            const targetUrl = `${APP_URL}/${page}${source ? '?source=' + source : ''}`;
+            
+            // Add some analytics if needed
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'redirect_to_app', {
+                    'destination': page,
+                    'source': source
+                });
+            }
+            
+            // Perform redirect
+            window.location.href = targetUrl;
+        }
+        
+        // Manual redirect function
+        function handleManualRedirect() {
+            performRedirect();
+        }
+        
+        // Auto redirect after 2.8 seconds
+        setTimeout(performRedirect, 2800);
+        
+        // Fallback redirect after 5 seconds
+        setTimeout(() => {
+            if (window.location.href.includes('redirect-transition.html')) {
+                performRedirect();
+            }
+        }, 5000);
+        
+        // Handle page visibility change (if user switches tabs)
+        document.addEventListener('visibilitychange', function() {
+            if (!document.hidden) {
+                // User came back to tab, redirect immediately
+                setTimeout(performRedirect, 500);
+            }
+        });
+        
+        // Preload the target page for faster transition
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = `${APP_URL}/${page}`;
+        document.head.appendChild(link);
+    </script>
+</body>
+</html> 
