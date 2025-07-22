@@ -35,11 +35,11 @@ const Header = () => {
 
           {/* Desktop CTA */}
           <div className="hidden md:flex items-center gap-4">
-            <Button variant="ghost">
+            <Button variant="ghost" onClick={() => window.location.href='./redirect-transition.html?target=login'}>
               Sign In
             </Button>
-            <Button variant="default">
-              Start Free Trial
+            <Button variant="default" onClick={() => window.location.href='./redirect-transition.html?target=register'}>
+               Start Free Trial
             </Button>
           </div>
 
