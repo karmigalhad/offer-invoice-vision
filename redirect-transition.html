@@ -25,11 +25,11 @@
             overflow: hidden;
         }
 
-        .transition-container {
+        .container {
             text-align: center;
-            padding: 2rem;
             max-width: 500px;
-            width: 90%;
+            padding: 2rem;
+            position: relative;
         }
 
         .logo {
@@ -37,115 +37,100 @@
             font-weight: 700;
             margin-bottom: 1rem;
             opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.2s forwards;
+            animation: fadeInUp 0.8s ease-out 0.3s forwards;
         }
 
-        .main-message {
-            font-size: 1.5rem;
-            font-weight: 500;
-            margin-bottom: 0.5rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.4s forwards;
-        }
-
-        .sub-message {
-            font-size: 1rem;
-            opacity: 0.8;
-            margin-bottom: 2rem;
+        .subtitle {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 3rem;
             opacity: 0;
             animation: fadeInUp 0.8s ease-out 0.6s forwards;
         }
 
-        .spinner-container {
-            margin: 2rem 0;
+        .progress-container {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 0;
-            animation: fadeInUp 0.8s ease-out 0.8s forwards;
-        }
-
-        .spinner {
-            width: 60px;
-            height: 60px;
-            border: 4px solid rgba(255, 255, 255, 0.2);
-            border-top: 4px solid #ffffff;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            animation: spin 1s linear infinite;
+            animation: fadeInUp 0.8s ease-out 0.9s forwards;
         }
 
         .progress-bar {
             width: 100%;
-            height: 4px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 4px;
             overflow: hidden;
-            margin: 1rem 0;
+            margin-bottom: 1rem;
         }
 
         .progress-fill {
             height: 100%;
-            background: linear-gradient(90deg, #ffffff, #f0f0f0);
-            border-radius: 2px;
-            animation: progressFill 2.5s ease-out forwards;
-            transform: translateX(-100%);
+            background: linear-gradient(90deg, #fff, #f0f0f0);
+            border-radius: 4px;
+            width: 0%;
+            animation: progressFill 2.5s ease-in-out forwards;
         }
 
         .status-text {
+            font-size: 1rem;
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .target-info {
             font-size: 0.9rem;
-            opacity: 0.7;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 1s forwards;
+            color: rgba(255, 255, 255, 0.8);
         }
 
-        .app-preview {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin: 1.5rem 0;
-            opacity: 0;
-            animation: fadeInUp 0.8s ease-out 1.2s forwards;
+        .loading-dots {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            margin: 2rem auto;
         }
 
-        .feature-icon {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            animation: floatIcon 2s ease-in-out infinite;
+        .loading-dots div {
+            position: absolute;
+            top: 33px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: #fff;
+            animation-timing-function: cubic-bezier(0, 1, 1, 0);
         }
 
-        .feature-icon:nth-child(2) {
-            animation-delay: 0.3s;
+        .loading-dots div:nth-child(1) {
+            left: 8px;
+            animation: dots1 0.6s infinite;
         }
 
-        .feature-icon:nth-child(3) {
-            animation-delay: 0.6s;
+        .loading-dots div:nth-child(2) {
+            left: 8px;
+            animation: dots2 0.6s infinite;
         }
 
-        .backup-link {
+        .loading-dots div:nth-child(3) {
+            left: 32px;
+            animation: dots2 0.6s infinite;
+        }
+
+        .loading-dots div:nth-child(4) {
+            left: 56px;
+            animation: dots3 0.6s infinite;
+        }
+
+        .footer-text {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.7);
             margin-top: 2rem;
             opacity: 0;
-            animation: fadeInUp 0.8s ease-out 1.4s forwards;
-        }
-
-        .backup-link a {
-            color: rgba(255, 255, 255, 0.8);
-            text-decoration: none;
-            font-size: 0.9rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-            padding-bottom: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .backup-link a:hover {
-            color: white;
-            border-bottom-color: white;
+            animation: fadeInUp 0.8s ease-out 1.2s forwards;
         }
 
         @keyframes fadeInUp {
@@ -159,160 +144,190 @@
             }
         }
 
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
         @keyframes progressFill {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(0%); }
+            0% { width: 0%; }
+            50% { width: 70%; }
+            100% { width: 100%; }
         }
 
-        @keyframes floatIcon {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+        @keyframes dots1 {
+            0% { transform: scale(0); }
+            100% { transform: scale(1); }
         }
 
-        /* Responsive design */
-        @media (max-width: 480px) {
-            .logo {
-                font-size: 2rem;
-            }
-            
-            .main-message {
-                font-size: 1.2rem;
-            }
-            
-            .feature-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.2rem;
-            }
+        @keyframes dots3 {
+            0% { transform: scale(1); }
+            100% { transform: scale(0); }
         }
 
-        /* Background animation */
-        body::before {
-            content: '';
+        @keyframes dots2 {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(24px, 0); }
+        }
+
+        .floating-shapes {
             position: absolute;
             top: 0;
             left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 60%, rgba(255, 255, 255, 0.05) 0%, transparent 50%);
-            animation: backgroundShift 8s ease-in-out infinite;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
         }
 
-        @keyframes backgroundShift {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.7; }
+        .shape {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+        }
+
+        .shape:nth-child(1) {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape:nth-child(2) {
+            width: 40px;
+            height: 40px;
+            top: 60%;
+            right: 15%;
+            animation: float 4s ease-in-out infinite reverse;
+        }
+
+        .shape:nth-child(3) {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation: float 5s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
     </style>
 </head>
 <body>
-    <div class="transition-container">
+    <div class="floating-shapes">
+        <div class="shape"></div>
+        <div class="shape"></div>
+        <div class="shape"></div>
+    </div>
+
+    <div class="container">
         <div class="logo">MonTkay</div>
-        <h1 class="main-message">Launching Your Dashboard</h1>
-        <p class="sub-message">Taking you to the product management system...</p>
+        <div class="subtitle">Taking you to your dashboard...</div>
         
-        <div class="spinner-container">
-            <div class="spinner"></div>
+        <div class="progress-container">
             <div class="progress-bar">
                 <div class="progress-fill"></div>
             </div>
+            <div class="status-text" id="statusText">Preparing your workspace...</div>
+            <div class="target-info" id="targetInfo">Loading...</div>
         </div>
-        
-        <div class="status-text" id="statusText">Initializing secure connection...</div>
-        
-        <div class="app-preview">
-            <div class="feature-icon">📊</div>
-            <div class="feature-icon">📦</div>
-            <div class="feature-icon">💰</div>
+
+        <div class="loading-dots">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
         </div>
-        
-        <div class="backup-link">
-            <a href="#" onclick="handleManualRedirect()">Click here if not redirected automatically</a>
+
+        <div class="footer-text">
+            Powered by MonTkay • Secure & Fast
         </div>
     </div>
 
     <script>
-        // Configuration
-        const APP_URL = 'https://product-offer-frontend-4ivcvo5xa-lilyans-projects-1055f01a.vercel.app';
-        
-        // Get redirect parameters
+        // Get URL parameters
         const urlParams = new URLSearchParams(window.location.search);
-        const page = urlParams.get('page') || 'login';
-        const source = urlParams.get('source') || 'website';
+        const target = urlParams.get('target') || 'login';
         
-        // Status messages
-        const statusMessages = [
-            'Initializing secure connection...',
-            'Loading your workspace...',
-            'Preparing dashboard...',
-            'Almost ready...'
-        ];
+        // Base URL for your Vercel app
+        const baseUrl = 'https://product-offer-frontend-4ivcvo5xa-lilyans-projects-1055f01a.vercel.app';
         
-        let currentStatusIndex = 0;
-        const statusElement = document.getElementById('statusText');
-        
-        // Update status messages
-        function updateStatus() {
-            if (currentStatusIndex < statusMessages.length) {
-                statusElement.textContent = statusMessages[currentStatusIndex];
-                currentStatusIndex++;
-                setTimeout(updateStatus, 600);
+        // Map targets to URLs and descriptions
+        const targetMap = {
+            'login': {
+                url: `${baseUrl}/login`,
+                description: 'Sign In Portal',
+                status: 'Authenticating your session...'
+            },
+            'register': {
+                url: `${baseUrl}/register`,
+                description: 'Registration Portal',
+                status: 'Setting up your account...'
+            },
+            'demo': {
+                url: `${baseUrl}/`,
+                description: 'Demo Dashboard',
+                status: 'Loading demo environment...'
+            },
+            'dashboard': {
+                url: `${baseUrl}/dashboard`,
+                description: 'Main Dashboard',
+                status: 'Accessing your workspace...'
             }
-        }
+        };
+
+        // Get target configuration
+        const config = targetMap[target] || targetMap['login'];
         
-        // Start status updates
-        setTimeout(updateStatus, 800);
+        // Update UI with target info
+        document.getElementById('targetInfo').textContent = config.description;
+        document.getElementById('statusText').textContent = config.status;
+
+        // Status messages that change over time
+        const statusMessages = [
+            config.status,
+            'Connecting to secure servers...',
+            'Loading your data...',
+            'Almost ready...',
+            'Redirecting now...'
+        ];
+
+        let currentMessage = 0;
         
-        // Handle redirect
-        function performRedirect() {
-            const targetUrl = `${APP_URL}/${page}${source ? '?source=' + source : ''}`;
+        // Update status message every 500ms
+        const statusInterval = setInterval(() => {
+            if (currentMessage < statusMessages.length - 1) {
+                currentMessage++;
+                document.getElementById('statusText').textContent = statusMessages[currentMessage];
+            }
+        }, 500);
+
+        // Redirect after 2.8 seconds (slightly longer than progress bar animation)
+        setTimeout(() => {
+            clearInterval(statusInterval);
             
-            // Add some analytics if needed
+            // Add analytics tracking if needed
             if (typeof gtag !== 'undefined') {
-                gtag('event', 'redirect_to_app', {
-                    'destination': page,
-                    'source': source
+                gtag('event', 'redirect', {
+                    'event_category': 'website',
+                    'event_label': target,
+                    'value': 1
                 });
             }
             
-            // Perform redirect
-            window.location.href = targetUrl;
-        }
-        
-        // Manual redirect function
-        function handleManualRedirect() {
-            performRedirect();
-        }
-        
-        // Auto redirect after 2.8 seconds
-        setTimeout(performRedirect, 2800);
-        
-        // Fallback redirect after 5 seconds
+            // Perform the redirect
+            window.location.href = config.url;
+        }, 2800);
+
+        // Fallback redirect in case something goes wrong
         setTimeout(() => {
             if (window.location.href.includes('redirect-transition.html')) {
-                performRedirect();
+                window.location.href = config.url;
             }
         }, 5000);
-        
-        // Handle page visibility change (if user switches tabs)
-        document.addEventListener('visibilitychange', function() {
-            if (!document.hidden) {
-                // User came back to tab, redirect immediately
-                setTimeout(performRedirect, 500);
-            }
-        });
-        
-        // Preload the target page for faster transition
+
+        // Preload the target page for faster loading
         const link = document.createElement('link');
         link.rel = 'prefetch';
-        link.href = `${APP_URL}/${page}`;
+        link.href = config.url;
         document.head.appendChild(link);
     </script>
 </body>
