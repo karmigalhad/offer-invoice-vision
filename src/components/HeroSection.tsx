@@ -32,11 +32,11 @@ const HeroSection = () => {
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12 animate-fade-up">
-            <Button variant="hero" size="lg" className="text-lg px-8 py-6 h-auto">
+            <Button variant="hero" size="lg" className="text-lg px-8 py-6 h-auto" onClick={() => window.location.href='./redirect-transition.html?target=register'}>
               Start Free Trial
               <ArrowRight className="w-5 h-5" />
             </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-6 h-auto">
+            <Button variant="outline" size="lg" className="text-lg px-8 py-6 h-auto" onClick={() => window.location.href='./redirect-transition.html?target=demo'}>
               Watch Demo
             </Button>
           </div>
