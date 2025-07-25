@@ -134,6 +134,16 @@ const PricingSection = () => {
                 >
                   {plan.buttonText}
                 </Button>
+                
+                {plan.name !== "Free Tier" && plan.name !== "Enterprise Plan" && (
+                  <Button 
+                    variant="outline" 
+                    className="w-full mt-2"
+                    onClick={() => window.location.href = '/simple-redirect.html?target=subscribe'}
+                  >
+                    Subscribe Now
+                  </Button>
+                )}
               </CardContent>
             </Card>
           ))}
