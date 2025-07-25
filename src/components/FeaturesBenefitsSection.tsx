@@ -1,6 +1,7 @@
 import { Mail, BarChart, Package, FileText, TrendingUp, Users, Shield, Bell, Cloud, CheckCircle, Target, Lightbulb, Clock, DollarSign, Zap, Search } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { useEffect, useState } from "react";
 
 const features = [
   {
@@ -94,8 +95,33 @@ const benefits = [
 ];
 
 const FeaturesBenefitsSection = () => {
+  const [activeTab, setActiveTab] = useState("features");
+
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash === "#features") {
+      setActiveTab("features");
+    } else if (hash === "#benefits") {
+      setActiveTab("benefits");
+    }
+
+    const handleHashChange = () => {
+      const hash = window.location.hash;
+      if (hash === "#features") {
+        setActiveTab("features");
+      } else if (hash === "#benefits") {
+        setActiveTab("benefits");
+      }
+    };
+
+    window.addEventListener('hashchange', handleHashChange);
+    return () => window.removeEventListener('hashchange', handleHashChange);
+  }, []);
+
   return (
-    <section className="py-20 bg-background">
+    <>
+      <div id="benefits" className="absolute scroll-mt-20"></div>
+      <section id="features" className="py-20 bg-background scroll-mt-20">
       <div className="container mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -110,7 +136,7 @@ const FeaturesBenefitsSection = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="features" className="w-full">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
           <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-12">
             <TabsTrigger value="features" className="text-lg py-3">Features</TabsTrigger>
             <TabsTrigger value="benefits" className="text-lg py-3">Benefits</TabsTrigger>
@@ -163,7 +189,8 @@ const FeaturesBenefitsSection = () => {
           </TabsContent>
         </Tabs>
       </div>
-    </section>
+      </section>
+    </>
   );
 };
 
