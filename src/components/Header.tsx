@@ -7,8 +7,12 @@ const scrollToSection = (sectionId: string, tab?: string) => {
   if (element) {
     element.scrollIntoView({ behavior: 'smooth' });
     if (tab) {
-      // Update URL hash for tab switching
-      window.location.hash = tab;
+      // Use a small delay to set hash after smooth scroll starts
+      setTimeout(() => {
+        history.replaceState(null, '', `#${tab}`);
+        // Dispatch custom event for tab switching
+        window.dispatchEvent(new CustomEvent('tabSwitch', { detail: tab }));
+      }, 100);
     }
   }
 };

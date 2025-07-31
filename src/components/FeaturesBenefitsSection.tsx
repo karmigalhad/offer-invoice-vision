@@ -114,8 +114,16 @@ const FeaturesBenefitsSection = () => {
       }
     };
 
+    const handleTabSwitch = (event: CustomEvent) => {
+      setActiveTab(event.detail);
+    };
+
     window.addEventListener('hashchange', handleHashChange);
-    return () => window.removeEventListener('hashchange', handleHashChange);
+    window.addEventListener('tabSwitch', handleTabSwitch as EventListener);
+    return () => {
+      window.removeEventListener('hashchange', handleHashChange);
+      window.removeEventListener('tabSwitch', handleTabSwitch as EventListener);
+    };
   }, []);
 
   return (
