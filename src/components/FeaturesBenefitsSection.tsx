@@ -137,10 +137,33 @@ const FeaturesBenefitsSection = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-2 max-w-md mx-auto mb-12">
-            <TabsTrigger value="features" className="text-lg py-3">Features</TabsTrigger>
-            <TabsTrigger value="benefits" className="text-lg py-3">Benefits</TabsTrigger>
-          </TabsList>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-12">
+            <div className="relative">
+              <button
+                onClick={() => setActiveTab("features")}
+                className={`px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 ${
+                  activeTab === "features"
+                    ? "bg-gradient-primary text-primary-foreground shadow-elegant transform scale-105"
+                    : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground"
+                }`}
+              >
+                Features
+              </button>
+            </div>
+            <div className="hidden sm:block w-px h-8 bg-border"></div>
+            <div className="relative">
+              <button
+                onClick={() => setActiveTab("benefits")}
+                className={`px-8 py-4 text-lg font-semibold rounded-xl transition-all duration-300 ${
+                  activeTab === "benefits"
+                    ? "bg-gradient-primary text-primary-foreground shadow-elegant transform scale-105"
+                    : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground"
+                }`}
+              >
+                Benefits
+              </button>
+            </div>
+          </div>
           
           <TabsContent value="features">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

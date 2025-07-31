@@ -2,6 +2,17 @@ import { BarChart3, Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
+const scrollToSection = (sectionId: string, tab?: string) => {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: 'smooth' });
+    if (tab) {
+      // Update URL hash for tab switching
+      window.location.hash = tab;
+    }
+  }
+};
+
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
@@ -19,18 +30,30 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <a href="#features" className="text-muted-foreground hover:text-primary transition-colors">
+            <button 
+              onClick={() => scrollToSection('features', 'features')}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Features
-            </a>
-            <a href="#benefits" className="text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('features', 'benefits')}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Benefits
-            </a>
-            <a href="#pricing" className="text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('pricing')}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Pricing
-            </a>
-            <a href="#contact" className="text-muted-foreground hover:text-primary transition-colors">
+            </button>
+            <button 
+              onClick={() => scrollToSection('contact')}
+              className="text-muted-foreground hover:text-primary transition-colors"
+            >
               Contact
-            </a>
+            </button>
           </div>
 
           {/* Desktop CTA */}
@@ -60,18 +83,42 @@ const Header = () => {
         {isMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-background border-b border-border/50 shadow-card">
             <div className="container mx-auto px-6 py-4 space-y-4">
-              <a href="#features" className="block text-muted-foreground hover:text-primary transition-colors py-2">
+              <button 
+                onClick={() => {
+                  scrollToSection('features', 'features');
+                  setIsMenuOpen(false);
+                }}
+                className="block text-muted-foreground hover:text-primary transition-colors py-2 w-full text-left"
+              >
                 Features
-              </a>
-              <a href="#benefits" className="block text-muted-foreground hover:text-primary transition-colors py-2">
+              </button>
+              <button 
+                onClick={() => {
+                  scrollToSection('features', 'benefits');
+                  setIsMenuOpen(false);
+                }}
+                className="block text-muted-foreground hover:text-primary transition-colors py-2 w-full text-left"
+              >
                 Benefits
-              </a>
-              <a href="#pricing" className="block text-muted-foreground hover:text-primary transition-colors py-2">
+              </button>
+              <button 
+                onClick={() => {
+                  scrollToSection('pricing');
+                  setIsMenuOpen(false);
+                }}
+                className="block text-muted-foreground hover:text-primary transition-colors py-2 w-full text-left"
+              >
                 Pricing
-              </a>
-              <a href="#contact" className="block text-muted-foreground hover:text-primary transition-colors py-2">
+              </button>
+              <button 
+                onClick={() => {
+                  scrollToSection('contact');
+                  setIsMenuOpen(false);
+                }}
+                className="block text-muted-foreground hover:text-primary transition-colors py-2 w-full text-left"
+              >
                 Contact
-              </a>
+              </button>
               <div className="pt-4 space-y-3">
                 <Button variant="ghost" className="w-full">
                   Sign In
